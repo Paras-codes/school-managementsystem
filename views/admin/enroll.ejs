@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white py-3">
+        <h4 class="mb-0"><i class="bi bi-person-plus-fill me-2"></i>Enroll New Student</h4>
+      </div>
+      <div class="card-body p-4">
+        <% if (error) { %>
+          <div class="alert alert-danger"><i class="bi bi-exclamation-triangle me-1"></i><%= error %></div>
+        <% } %>
+        <form action="/admin/students/enroll" method="POST">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Full Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="name" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Roll Number <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="rollNumber" required />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Class <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" name="class" placeholder="e.g. Grade 5" required />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Section</label>
+              <input type="text" class="form-control" name="section" placeholder="e.g. A" />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" name="dateOfBirth" />
+            </div>
+            <div class="col-12">
+              <label class="form-label">Address</label>
+              <textarea class="form-control" name="address" rows="2"></textarea>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Parent Name</label>
+              <input type="text" class="form-control" name="parentName" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Parent Email</label>
+              <input type="email" class="form-control" name="parentEmail" />
+            </div>
+            <div class="col-12 d-flex gap-2">
+              <button type="submit" class="btn btn-primary">
+                <i class="bi bi-person-check-fill me-1"></i>Enroll Student
+              </button>
+              <a href="/admin/students" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

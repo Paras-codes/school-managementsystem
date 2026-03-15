@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2><i class="bi bi-speedometer2 me-2 text-primary"></i>Admin Dashboard</h2>
+  <span class="text-muted">Welcome, <strong><%= user.name %></strong></span>
+</div>
+
+<div class="row g-4 mb-4">
+  <div class="col-md-4">
+    <div class="card shadow hover-card text-center">
+      <div class="card-body py-4">
+        <i class="bi bi-people-fill text-primary fs-1 mb-2"></i>
+        <h2 class="fw-bold text-primary"><%= totalStudents %></h2>
+        <p class="text-muted mb-0">Total Students</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card shadow hover-card text-center">
+      <div class="card-body py-4">
+        <i class="bi bi-check-circle-fill text-success fs-1 mb-2"></i>
+        <h2 class="fw-bold text-success"><%= presentToday %></h2>
+        <p class="text-muted mb-0">Present Today</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card shadow hover-card text-center">
+      <div class="card-body py-4">
+        <i class="bi bi-x-circle-fill text-danger fs-1 mb-2"></i>
+        <h2 class="fw-bold text-danger"><%= absentToday %></h2>
+        <p class="text-muted mb-0">Absent Today</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title"><i class="bi bi-person-lines-fill me-2 text-primary"></i>Student Management</h5>
+        <p class="card-text text-muted">Enroll, view, and manage student records.</p>
+        <a href="/admin/students" class="btn btn-primary me-2">
+          <i class="bi bi-list-ul me-1"></i>View Students
+        </a>
+        <a href="/admin/students/enroll" class="btn btn-outline-primary">
+          <i class="bi bi-person-plus me-1"></i>Enroll New
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title"><i class="bi bi-calendar-check me-2 text-success"></i>Attendance &amp; Results</h5>
+        <p class="card-text text-muted">Track attendance and manage academic results.</p>
+        <a href="/admin/students" class="btn btn-success">
+          <i class="bi bi-search me-1"></i>Find Student
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

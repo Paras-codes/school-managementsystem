@@ -1,0 +1,101 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2><i class="bi bi-calendar-check-fill me-2 text-success"></i>Attendance</h2>
+    <% if (student) { %>
+      <p class="text-muted mb-0">Student: <strong><%= student.name %></strong> &mdash; Roll: <span class="badge bg-secondary"><%= student.rollNumber %></span></p>
+    <% } %>
+  </div>
+  <a href="/parent/dashboard" class="btn btn-outline-secondary">
+    <i class="bi bi-arrow-left me-1"></i>Dashboard
+  </a>
+</div>
+
+<div class="card shadow-sm mb-4">
+  <div class="card-body">
+    <form method="GET" action="/parent/attendance" class="row g-2 align-items-end">
+      <div class="col-md-4">
+        <label class="form-label">From Date</label>
+        <input type="date" name="from" class="form-control" value="<%= from %>" />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">To Date</label>
+        <input type="date" name="to" class="form-control" value="<%= to %>" />
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-outline-primary w-100"><i class="bi bi-filter me-1"></i>Filter</button>
+      </div>
+      <div class="col-md-2">
+        <a href="/parent/attendance" class="btn btn-outline-secondary w-100">Clear</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card text-center shadow-sm border-success">
+      <div class="card-body py-3">
+        <i class="bi bi-check-circle-fill text-success fs-2 mb-1"></i>
+        <h3 class="fw-bold text-success"><%= presentCount %></h3>
+        <p class="text-muted mb-0">Present</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-center shadow-sm border-danger">
+      <div class="card-body py-3">
+        <i class="bi bi-x-circle-fill text-danger fs-2 mb-1"></i>
+        <h3 class="fw-bold text-danger"><%= absentCount %></h3>
+        <p class="text-muted mb-0">Absent</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-center shadow-sm border-warning">
+      <div class="card-body py-3">
+        <i class="bi bi-clock-fill text-warning fs-2 mb-1"></i>
+        <h3 class="fw-bold text-warning"><%= lateCount %></h3>
+        <p class="text-muted mb-0">Late</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-header bg-light fw-semibold">
+    <i class="bi bi-table me-2"></i>Attendance Records (<%= records.length %>)
+  </div>
+  <div class="card-body p-0">
+    <% if (records.length === 0) { %>
+      <div class="text-center py-5 text-muted">
+        <i class="bi bi-inbox fs-1"></i>
+        <p class="mt-2">No attendance records found for the selected period.</p>
+      </div>
+    <% } else { %>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead class="table-light">
+            <tr><th>Date</th><th>Status</th><th>Remarks</th></tr>
+          </thead>
+          <tbody>
+            <% records.forEach(r => { %>
+              <tr>
+                <td><%= new Date(r.date).toLocaleDateString() %></td>
+                <td>
+                  <% if (r.status === 'present') { %>
+                    <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Present</span>
+                  <% } else if (r.status === 'absent') { %>
+                    <span class="badge bg-danger"><i class="bi bi-x-circle me-1"></i>Absent</span>
+                  <% } else { %>
+                    <span class="badge bg-warning text-dark"><i class="bi bi-clock me-1"></i>Late</span>
+                  <% } %>
+                </td>
+                <td><%= r.remarks || '-' %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    <% } %>
+  </div>
+</div>
