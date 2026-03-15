@@ -1,0 +1,42 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+    <div class="card shadow">
+      <div class="card-header bg-success text-white text-center py-3">
+        <h4 class="mb-0"><i class="bi bi-person-plus-fill me-2"></i>Parent Registration</h4>
+      </div>
+      <div class="card-body p-4">
+        <% if (error) { %>
+          <div class="alert alert-danger"><i class="bi bi-exclamation-triangle me-1"></i><%= error %></div>
+        <% } %>
+        <% if (success) { %>
+          <div class="alert alert-success"><i class="bi bi-check-circle me-1"></i><%= success %></div>
+        <% } %>
+        <p class="text-muted mb-4">Register to access your child's academic information. You need your child's roll number to register.</p>
+        <form action="/auth/register" method="POST">
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" name="name" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" name="email" required />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" minlength="6" required />
+          </div>
+          <div class="mb-3">
+            <label for="rollNumber" class="form-label">Student Roll Number</label>
+            <input type="text" class="form-control" id="rollNumber" name="rollNumber" required />
+            <div class="form-text">Enter your child's roll number to link your account.</div>
+          </div>
+          <button type="submit" class="btn btn-success w-100">
+            <i class="bi bi-person-check-fill me-1"></i>Register
+          </button>
+        </form>
+        <hr />
+        <p class="text-center mb-0 text-muted">Already have an account? <a href="/auth/login">Login here</a></p>
+      </div>
+    </div>
+  </div>
+</div>

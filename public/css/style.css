@@ -1,0 +1,67 @@
+body {
+  background-color: #f4f6f9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main.container {
+  flex: 1;
+}
+
+/* Card hover effect */
+.hover-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Navbar custom */
+.navbar-brand {
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+
+/* Table improvements */
+.table th {
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6c757d;
+}
+
+/* Card headers */
+.card-header {
+  font-size: 0.95rem;
+}
+
+/* Badge sizing */
+.badge.fs-6 {
+  font-size: 0.9rem !important;
+}
+
+/* Progress bar */
+.progress {
+  border-radius: 4px;
+}
+
+/* Alert spacing */
+.alert {
+  border-radius: 8px;
+}
+
+/* Form controls */
+.form-control:focus,
+.form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+/* Footer */
+footer {
+  font-size: 0.85rem;
+}

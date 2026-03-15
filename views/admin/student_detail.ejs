@@ -1,0 +1,61 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2><i class="bi bi-person-badge-fill me-2 text-primary"></i><%= student.name %></h2>
+  <a href="/admin/students" class="btn btn-outline-secondary">
+    <i class="bi bi-arrow-left me-1"></i>Back to Students
+  </a>
+</div>
+
+<div class="row g-4">
+  <div class="col-md-6">
+    <div class="card shadow-sm h-100">
+      <div class="card-header bg-light fw-semibold">
+        <i class="bi bi-info-circle me-2 text-primary"></i>Student Information
+      </div>
+      <div class="card-body">
+        <table class="table table-borderless mb-0">
+          <tr><th class="text-muted" width="40%">Roll Number</th><td><span class="badge bg-secondary fs-6"><%= student.rollNumber %></span></td></tr>
+          <tr><th class="text-muted">Name</th><td><strong><%= student.name %></strong></td></tr>
+          <tr><th class="text-muted">Class</th><td><%= student.class %></td></tr>
+          <tr><th class="text-muted">Section</th><td><%= student.section || '-' %></td></tr>
+          <tr><th class="text-muted">Date of Birth</th><td><%= student.dateOfBirth ? new Date(student.dateOfBirth).toLocaleDateString() : '-' %></td></tr>
+          <tr><th class="text-muted">Enrolled</th><td><%= new Date(student.enrollmentDate).toLocaleDateString() %></td></tr>
+          <tr><th class="text-muted">Address</th><td><%= student.address || '-' %></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-light fw-semibold">
+        <i class="bi bi-people me-2 text-success"></i>Parent Information
+      </div>
+      <div class="card-body">
+        <table class="table table-borderless mb-0">
+          <tr><th class="text-muted" width="40%">Parent Name</th><td><%= student.parentName || '-' %></td></tr>
+          <tr><th class="text-muted">Parent Email</th><td><%= student.parentEmail || '-' %></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-header bg-light fw-semibold">
+        <i class="bi bi-lightning me-2 text-warning"></i>Quick Actions
+      </div>
+      <div class="card-body d-flex flex-wrap gap-2">
+        <a href="/admin/students/<%= student._id %>/results" class="btn btn-outline-primary">
+          <i class="bi bi-bar-chart-fill me-1"></i>View Results
+        </a>
+        <a href="/admin/students/<%= student._id %>/attendance" class="btn btn-outline-success">
+          <i class="bi bi-calendar-check me-1"></i>View Attendance
+        </a>
+        <form action="/admin/students/<%= student._id %>/delete" method="POST"
+              onsubmit="return confirm('Delete this student and all their records permanently?')">
+          <button type="submit" class="btn btn-outline-danger">
+            <i class="bi bi-trash-fill me-1"></i>Delete Student
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
